@@ -1,40 +1,33 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2867
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww23260\viewh11180\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+// use an integer for version numbers
+version = 4
 
-\f0\fs24 \cf0 plugins \{\
-    id("com.android.library")\
-    id("org.jetbrains.kotlin.android")\
-    id("com.lagradost.cloudstream3.gradle") // Plugin sp\'e9cifique \'e0 CloudStream pour compiler en .jar\
-\}\
-\
-android \{\
-    compileSdk = 34 // Ou la derni\'e8re version\
-    namespace = "com.ycngmn.animesama" // Change si tu modifies le package\
-\
-    defaultConfig \{\
-        minSdk = 21\
-        targetSdk = 34\
-    \}\
-\
-    buildTypes \{\
-        release \{\
-            isMinifyEnabled = false\
-        \}\
-    \}\
-\}\
-\
-cloudstream \{ \
-    // Config pour le plugin CloudStream\
-    authors = listOf("CuxPlug") // Mets ton nom ou "Toi"\
-    description = "Provider pour Anime-sama.eu"\
-    language = "fr"\
-    status = 1 // 1 = Working\
-\}\
-\
-dependencies \{\
-    compileOnly("com.lagradost:cloudstream3:pre-release") // D\'e9pendance sur CloudStream core (compileOnly pour pas inclure dans le .jar)\
-\}}
+
+cloudstream {
+    // All of these properties are optional, you can safely remove them
+
+    description = "Anime-Sama est un site de référencement et de catalogage, créé par des passionnés de l’animation et du divertissement APAC."
+    authors = listOf("ycngmn")
+
+    /**
+    * Status int as the following:
+    * 0: Down
+    * 1: Ok
+    * 2: Slow
+    * 3: Beta only
+    * */
+    status = 1
+
+    tvTypes = listOf("Anime")
+
+    requiresResources = true
+    language = "fr"
+
+
+    iconUrl = "https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/logo.png"
+}
+
+android {
+    buildFeatures {
+        viewBinding = true
+    }
+}
